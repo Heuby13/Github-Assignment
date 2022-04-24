@@ -1,0 +1,64 @@
+let capture;
+let button;
+var mySound;
+var x = 200;
+let ballX = 0;
+let soundFile;
+
+function preload() {
+  soundFormats('ogg', 'mp3');
+  soundFile = loadSound('beatbox-snare.wav');
+}
+
+function preload() {
+  mySound = loadSound('doorbell-1.mp3');
+}
+
+//Setup function to turn on camera when code is run.
+function setup() {
+  createCanvas(390, 240);
+  capture = createCapture(VIDEO);
+  capture.size(320, 240);
+
+  
+  button = createButton('click me');
+  button.position(0, 0);
+  button.mousePressed(changeBG);
+}
+
+function draw() {
+  background(255);
+  image(capture, 0, 0, 320, 240);
+ellipse(x,x,x,x);
+ellipseMode(CENTER);
+  // Click Here
+  textSize(15);
+  text('click here',170,200);
+textStyle(BOLD);
+  textFont('Roboto-Regular.ttf');
+ //Allows the ball to follow the mouse movement.
+   let cnv = createCanvas(100, 100);
+  cnv.mousePressed(canvasPressed);
+  background(220);
+  ballX = constrain(mouseX, 0, width);
+  ellipse(ballX, height/2, 20, 20);
+  
+  
+}
+
+function canvasPressed(){
+  // map the ball's x location to a panning degree.
+  // between -1.0 (left) and 1.0 (right)
+  let panning = map(ballX, 0., width,-1.0, 1.0);
+  
+  soundFile.play();
+}
+
+function changeBG() {
+  let val = random(255);
+  background(val);
+}
+//plays the sound when the mouse is pressed.
+function mousePressed() {
+  mySound.play();
+}
