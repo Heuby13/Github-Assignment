@@ -1,0 +1,41 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background('#0f3056');
+  
+  //sun
+  
+  push();
+  colorMode(RGB);
+  fill(235, 222, 52);
+  noStroke();
+  ellipse(35, 35, 100, 100);
+  pop();
+
+  push();
+colorMode(HSB);
+  fill(360,0,100,100);
+  noStroke();
+  triangle(150, 100, 130, 150, 175, 150);
+  triangle(175, 125, 130, 125, 150, 170);
+  pop();
+  
+  push();
+  fill('#91a3b5');
+  noStroke();
+  quad(250, 300, 350, 300, 290, 150, 250, 200);
+  pop();
+  
+  push();
+  colorMode(RGB);
+  fill(67, 105, 107);
+  noStroke();
+  arc(270, 150, 110, 110, 0, PI + QUARTER_PI, PIE);
+  
+  
+  pop();
+  
+  
+}
