@@ -1,0 +1,68 @@
+var F1, F2, img1, img2, maskImage;
+ 
+let lines = [];
+
+function setup() {
+  createCanvas(600, 300);
+img1.filter(GRAY);
+  image(img1, 0, 0);
+  image(img2, width / 2, 0);
+
+  
+  img1.blend(img2, 0, 0, 33, 100, 67, 0, 33, 100, ADD);
+  image(img1, 0, 0);
+  image(img2, 0, 0);
+  
+  
+}
+
+function preload(){
+    //loads the text file saved on the computer.
+  lines = loadStrings("test.txt");
+  //Load in fonts.
+  F1 = loadFont("arial.ttf");
+  F2 = loadFont("Montserrat-Regular.ttf");
+  img1 = loadImage("blades1.jpg");
+  img2 = loadImage("blades2.jpg");
+}
+
+
+
+
+function draw() {
+  background(87, 147, 242);
+  
+
+  //textSize(40);
+  
+  image(img1, 0,0, width/2, height);
+  image(img2, width/2,0, width/2, height);
+  
+  fill(0);
+  //Changes the stroke of the text whenever the mouse is clicked.
+  strokeWeight(2);
+  fill(128 + sin(frameCount*0.1) * 128);
+  if (mouseIsPressed) {
+    stroke(255);
+  }
+  else {
+    noStroke();
+  }
+  //This aligns the text and gives each line of text a font.
+  textSize(12 + (mouseX / width)*72);
+   textAlign(LEFT);
+   textFont(F1);  
+    text("BLADES", 100, 30);
+    textAlign(CENTER);
+    text("of", 300, 30);
+    textAlign(RIGHT);
+    text("GLORY", 480, 30);
+
+  textFont(F2);
+  text("Will Ferrel", 500, 300);
+  text("Jon Heder", 250, 300);
+  
+   for (let i = 0; i < lines.length; i++) {
+    text(lines[i], 55, 20*i+20);
+  }
+}
